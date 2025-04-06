@@ -14,12 +14,12 @@ export function SidebarToggle({ isOpen, onClick }: SidebarToggleProps) {
       variant="ghost"
       size="icon"
       onClick={onClick}
-      className="hover:bg-zinc-200 dark:hover:bg-zinc-700"
+      className="lg:hidden"
     >
       {isOpen ? (
-        <XIcon className="h-4 w-4" />
+        <XIcon className="h-6 w-6" />
       ) : (
-        <MenuIcon className="h-4 w-4" />
+        <MenuIcon className="h-6 w-6" />
       )}
     </Button>
   )

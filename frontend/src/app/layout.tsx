@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -17,7 +16,6 @@ import {
   Wallet, 
   Scroll, 
   FileText,
-  DollarSign,
   CircuitBoard
 } from "lucide-react";
 import "./globals.css";

@@ -4,7 +4,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ThemeToggleButton } from "@/components/theme-toggle-button"
 import { useAuth } from "@/hooks/use-auth"
-import { cn } from "@/lib/utils"
 import { 
   Home, 
   LayoutDashboard, 

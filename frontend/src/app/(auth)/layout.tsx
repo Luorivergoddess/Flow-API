@@ -1,6 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-
 export default function AuthLayout({
   children,
 }: {

@@ -47,7 +47,7 @@ const MOCK_LOGS: LogEntry[] = [
   }
 ]
 
-export default function LogPage() {
+export default function LogsPage() {
   const [logs] = useState<LogEntry[]>(MOCK_LOGS)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<'all' | 'success' | 'error'>('all')

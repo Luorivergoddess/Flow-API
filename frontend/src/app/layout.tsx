@@ -16,7 +16,8 @@ import {
   Wallet, 
   Scroll, 
   FileText,
-  CircuitBoard
+  CircuitBoard,
+  BarChart
 } from "lucide-react";
 import "./globals.css";
 
@@ -120,11 +121,18 @@ export default function RootLayout({
                     isActive={currentPath === '/wallet'}
                   />
                   <NavItem
-                    href="/log"
+                    href="/logs"
                     icon={FileText}
-                    label="Log"
+                    label="Logs"
                     isOpen={isSidebarOpen}
-                    isActive={currentPath === '/log'}
+                    isActive={currentPath === '/logs'}
+                  />
+                  <NavItem
+                    href="/analytics"
+                    icon={BarChart}
+                    label="Analytics"
+                    isOpen={isSidebarOpen}
+                    isActive={currentPath === '/analytics'}
                   />
                   <NavItem
                     href="/settings"

@@ -21,12 +21,13 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
+    <div className="space-y-8">
+      <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">API Services</h1>
         <Button>Add New Service</Button>
       </div>
-      <Card> {/* Wrap table in a Card for better styling */}
+      {/* Card with consistent padding */}
+      <Card className="p-6">
         <Table>
           <TableCaption>A list of your configured API services.</TableCaption>
           <TableHeader>
@@ -34,8 +35,8 @@ export default function ServicesPage() {
               <TableHead className="w-[250px]">Name</TableHead>
               <TableHead>Type</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="text-right">Calls (Last 30d)</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead>Calls (Last 30d)</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -52,8 +53,8 @@ export default function ServicesPage() {
                      {service.status}
                    </span>
                 </TableCell>
-                <TableCell className="text-right">{service.calls.toLocaleString()}</TableCell>
-                <TableCell className="text-right">
+                <TableCell>{service.calls.toLocaleString()}</TableCell>
+                <TableCell>
                   <Button variant="outline" size="sm">Manage</Button>
                 </TableCell>
               </TableRow>

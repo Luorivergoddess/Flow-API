@@ -19,7 +19,7 @@ export function NavItem({ href, icon: Icon, label, isOpen, isActive }: NavItemPr
         isOpen ? '' : 'justify-center'
       } ${isActive ? 'bg-zinc-200 dark:bg-zinc-700' : ''}`}
     >
-      <Icon className={`w-6 h-6 ${isOpen ? 'mr-3' : ''}`} />
+      <Icon className={`w-5 h-5 ${isOpen ? 'mr-3' : ''}`} />
       {isOpen && label}
     </Link>
   )

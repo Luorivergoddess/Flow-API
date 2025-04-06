@@ -17,9 +17,9 @@ export function SidebarToggle({ isOpen, onClick }: SidebarToggleProps) {
       className="lg:hidden"
     >
       {isOpen ? (
-        <XIcon className="h-6 w-6" />
+        <XIcon className="h-5 w-5" />
       ) : (
-        <MenuIcon className="h-6 w-6" />
+        <MenuIcon className="h-5 w-5" />
       )}
     </Button>
   )

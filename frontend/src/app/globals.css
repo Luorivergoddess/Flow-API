@@ -120,18 +120,16 @@
     @apply bg-background text-foreground;
   }
 
-  /* 强制显示垂直滚动条 */
   html {
     overflow-y: scroll;
   }
 
   body {
-    padding-right: 10px; /* 预留滚动条空间 */
+    padding-right: 10px; 
   }
 
-  /* 自定义滚动条样式 */
   ::-webkit-scrollbar {
-    width: 10px; /* 更窄的滚动条 */
+    width: 10px; 
   }
 
   ::-webkit-scrollbar-thumb {
@@ -145,14 +143,9 @@
     background-color: transparent;
   }
 
-  /* Firefox滚动条样式 */
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--color-muted) transparent;
   }
 
-  /* 禁用水平滚动条 */
-  html, body {
-    overflow-x: hidden;
-  }
 }

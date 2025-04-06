@@ -180,16 +180,16 @@ export default function TokenPage() {
                   </div>
                 </TableCell>
                 <TableCell>
-                  {token.createdAt.toLocaleDateString()}
+                  {token.createdAt.toLocaleString('zh-CN', { hour12: false })}
                 </TableCell>
                 <TableCell>
-                  {token.expiresAt ? token.expiresAt.toLocaleDateString() : 'Never'}
+                  {token.expiresAt ? token.expiresAt.toLocaleString('zh-CN', { hour12: false }) : 'Never'}
                 </TableCell>
                 <TableCell>
                   {token.quota ? `${token.usedQuota}/${token.quota}` : 'Unlimited'}
                 </TableCell>
                 <TableCell>
-                  {token.lastUsed ? token.lastUsed.toLocaleDateString() : 'Never'}
+                  {token.lastUsed ? token.lastUsed.toLocaleString('zh-CN', { hour12: false }) : 'Never'}
                 </TableCell>
                 <TableCell>
                   <div className="flex gap-2">

@@ -32,13 +32,16 @@ export default function TokenForm({ initialData, onSubmit, onCancel }: TokenForm
   const [customExpiry, setCustomExpiry] = useState<string>('')
   const [showCustomExpiry, setShowCustomExpiry] = useState(false)
 
-  // Initialize customExpiry if provided in initialData
+  // Initialize customExpiry and update on initialData change
   useEffect(() => {
     if (initialData?.expiresAt && !['never', '1h', '1d', '1m'].includes(initialData.expiresAt)) {
       setCustomExpiry(initialData.expiresAt)
       setShowCustomExpiry(true)
+    } else {
+      setCustomExpiry('')
+      setShowCustomExpiry(false)
     }
-  })
+  }, [initialData])
 
   const handleSubmit = () => {
     if (!formData.name.trim()) return
@@ -119,11 +122,12 @@ export default function TokenForm({ initialData, onSubmit, onCancel }: TokenForm
           <div>
             <Input
               type="datetime-local"
-              value={customExpiry}
+              value={customExpiry || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 16)}
               onChange={(e) => {
                 setCustomExpiry(e.target.value)
                 setFormData({ ...formData, expiresAt: e.target.value })
               }}
+              step="1"
               className="mt-2"
             />
           </div>

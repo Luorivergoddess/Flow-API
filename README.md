@@ -1,6 +1,6 @@
 
 
-![cover](.\assets\cover.png)
+![cover](./assets/cover.png)
 
 
 

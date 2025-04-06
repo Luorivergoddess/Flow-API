@@ -10,8 +10,6 @@ type ToasterToast = {
   action?: React.ReactNode
 }
 
-type ActionType = "ADD_TOAST" | "UPDATE_TOAST" | "DISMISS_TOAST" | "REMOVE_TOAST"
-
 type Action =
   | {
       type: "ADD_TOAST"

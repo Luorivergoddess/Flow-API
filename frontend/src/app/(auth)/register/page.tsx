@@ -33,7 +33,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-900">
+    <div className="min-h-screen flex items-center justify-center">
       <Card className="w-full max-w-md p-8 space-y-6">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">Create an account</h1>

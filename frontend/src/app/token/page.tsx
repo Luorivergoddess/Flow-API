@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Copy, Plus, Trash2, Eye, EyeOff, Pencil } from 'lucide-react'
 import { Card } from "@/components/ui/card"
+import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@/components/ui/table"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
@@ -103,6 +104,9 @@ export default function TokenPage() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
+    toast({
+      title: `Copied: ${text}`
+    })
   }
 
   const toggleTokenVisibility = (id: string) => {

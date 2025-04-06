@@ -21,7 +21,7 @@ const MOCK_LOGS: LogEntry[] = [
   {
     id: '1',
     timestamp: new Date('2024-04-05T10:30:00'),
-    endpoint: '/api/v1/chat/completions',
+    endpoint: '/v1/chat/completions',
     method: 'POST',
     status: 200,
     duration: 1200,
@@ -30,7 +30,7 @@ const MOCK_LOGS: LogEntry[] = [
   {
     id: '2',
     timestamp: new Date('2024-04-05T10:29:00'),
-    endpoint: '/api/v1/models',
+    endpoint: '/v1/models',
     method: 'GET',
     status: 200,
     duration: 150,
@@ -39,7 +39,7 @@ const MOCK_LOGS: LogEntry[] = [
   {
     id: '3',
     timestamp: new Date('2024-04-05T10:28:00'),
-    endpoint: '/api/v1/chat/completions',
+    endpoint: '/v1/chat/completions',
     method: 'POST',
     status: 429,
     duration: 100,

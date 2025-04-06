@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
 import { SidebarToggle } from "@/components/sidebar-toggle";
 import { 
@@ -140,6 +141,7 @@ export default function RootLayout({
               </div>
             </main>
           </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

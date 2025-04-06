@@ -1,6 +1,6 @@
 "use client"
 
-import { MenuIcon, XIcon } from "lucide-react"
+import { PanelLeftClose, PanelLeft } from "lucide-react"
 import { Button } from "./ui/button"
 
 interface SidebarToggleProps {
@@ -14,12 +14,12 @@ export function SidebarToggle({ isOpen, onClick }: SidebarToggleProps) {
       variant="ghost"
       size="icon"
       onClick={onClick}
-      className="lg:hidden"
+      className="hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:shadow-md transition-all lg:hidden w-10 h-10"
     >
       {isOpen ? (
-        <XIcon className="h-5 w-5" />
+        <PanelLeftClose className="h-6 w-6" />
       ) : (
-        <MenuIcon className="h-5 w-5" />
+        <PanelLeft className="h-6 w-6" />
       )}
     </Button>
   )

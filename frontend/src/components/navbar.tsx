@@ -12,7 +12,7 @@ import {
   BookOpen,
   Menu
 } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 // Navigation items for both desktop and mobile
 const navItems = [
@@ -67,6 +67,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent>
+              <SheetTitle>Navigation</SheetTitle>
               <nav className="flex flex-col gap-4 mt-8">
                 {navItems.map(({ href, label, icon: Icon, requiresAuth }) => {
                   if (requiresAuth && !user) return null

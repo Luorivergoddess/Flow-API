@@ -79,10 +79,11 @@ export default function RootLayout({
               <aside className={`fixed top-0 left-0 h-screen bg-zinc-100/80 dark:bg-zinc-800/80 backdrop-blur-sm border-r border-zinc-200 dark:border-zinc-700 flex flex-col transition-all duration-300 pt-28 ${
                 isSidebarOpen ? 'w-56' : 'w-14'
               }`}>
-                <div className={`flex items-center justify-between px-2 py-4 ${
-                  isSidebarOpen ? '' : 'justify-center'
+                <div className={`flex flex-col px-2 py-4 ${
+                  isSidebarOpen ? '' : 'items-center'
                 }`}>
                   <SidebarToggle isOpen={isSidebarOpen} onClick={() => setSidebarOpen(!isSidebarOpen)} />
+                  <div className={`h-[2px] w-[80%] mx-auto mt-4 rounded-full bg-zinc-300 dark:bg-zinc-600 ${isSidebarOpen ? 'hidden' : 'block'}`} />
                 </div>
                 <nav className="space-y-2 px-1 pt-0">
                   <NavItem

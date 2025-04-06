@@ -32,9 +32,8 @@ type TokenFormData = {
 export default function TokenPage() {
   const [tokens, setTokens] = useState<Token[]>([])
   const [showTokens, setShowTokens] = useState<Record<string, boolean>>({})
-  const [editingToken, setEditingToken] = useState<Token | null>(null)
   const [isCreateOpen, setIsCreateOpen] = useState(false)
-  const [isEditOpen, setIsEditOpen] = useState(false)
+  const [editingTokenId, setEditingTokenId] = useState<string | null>(null)
 
   const handleFormSubmit = (formData: TokenFormData, existingToken?: Token) => {
     const now = new Date()
@@ -92,7 +91,7 @@ export default function TokenPage() {
     
     // Close the sheet after submission
     if (existingToken) {
-      setIsEditOpen(false)
+      setEditingTokenId(null)
     } else {
       setIsCreateOpen(false)
     }
@@ -197,15 +196,15 @@ export default function TokenPage() {
                 </TableCell>
                 <TableCell>
                   <div className="flex gap-2">
-                    <Sheet open={isEditOpen} onOpenChange={setIsEditOpen}>
+                    <Sheet 
+                      open={editingTokenId === token.id} 
+                      onOpenChange={(open) => setEditingTokenId(open ? token.id : null)}
+                    >
                       <SheetTrigger asChild>
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => {
-                            setEditingToken(token)
-                            setIsEditOpen(true)
-                          }}
+                          onClick={() => setEditingTokenId(token.id)}
                         >
                           <Pencil className="w-4 h-4" />
                         </Button>
@@ -224,7 +223,7 @@ export default function TokenPage() {
                               ipWhitelist: token.ipWhitelist?.join('\n') ?? ''
                             }}
                             onSubmit={(data) => handleFormSubmit(data, token)}
-                            onCancel={() => setIsEditOpen(false)}
+                            onCancel={() => setEditingTokenId(null)}
                           />
                         </div>
                       </SheetContent>

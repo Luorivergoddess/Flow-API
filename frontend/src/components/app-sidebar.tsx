@@ -2,21 +2,22 @@
 
 import * as React from "react"
 import {
-  IconCamera,
   IconChartBar,
+  IconCircuitBattery,
   IconDashboard,
   IconDatabase,
-  IconFileAi,
-  IconFileDescription,
+  IconFileText,
   IconFileWord,
   IconFolder,
   IconHelp,
   IconInnerShadowTop,
-  IconListDetails,
+  IconMessageShare,
   IconReport,
+  IconNote,
   IconSearch,
   IconSettings,
   IconUsers,
+  IconWallet
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -42,76 +43,38 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: IconListDetails,
+      title: "Services",
+      url: "/services",
+      icon: IconCircuitBattery,
+    },
+    {
+      title: "Chat",
+      url: "/chat",
+      icon: IconMessageShare,
+    },
+    {
+      title: "Token",
+      url: "/token",
+      icon: IconNote,
+    },
+    {
+      title: "Wallet",
+      url: "/wallet",
+      icon: IconWallet,
+    },
+    {
+      title: "Logs",
+      url: "/logs",
+      icon: IconFileText,
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "/analytics",
       icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
     },
   ],
   navSecondary: [

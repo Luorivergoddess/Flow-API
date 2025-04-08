@@ -18,12 +18,6 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
 
 const docSections = [
   {
@@ -101,34 +95,23 @@ export default function DocumentationPage() {
                   </div>
                 </div>
                 
-                {/* Documentation Navigation */}
+                {/* Documentation Introduction */}
                 <Card className="mb-6">
                   <CardHeader>
                     <CardTitle>Flow-API Documentation</CardTitle>
                     <CardDescription>
-                      Comprehensive guides and API references
+                      Select a section below to explore our comprehensive documentation
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <Tabs defaultValue={activeTab} onValueChange={setActiveTab}>
-                      <TabsList className="grid grid-cols-3 w-full">
-                        {docSections.map((section) => (
-                          <TabsTrigger key={section.id} value={section.id}>
-                            {section.title}
-                          </TabsTrigger>
-                        ))}
-                      </TabsList>
-                    </Tabs>
-                  </CardContent>
                 </Card>
                 
-                {/* Documentation Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                {/* Documentation Navigation Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                   {docSections.map((section) => (
                     <Card 
                       key={section.id}
-                      className={`hover:shadow-md transition-shadow cursor-pointer ${
-                        activeTab === section.id ? "border-primary" : ""
+                      className={`hover:shadow-md transition-all cursor-pointer ${
+                        activeTab === section.id ? "border-primary bg-primary/5" : ""
                       }`}
                       onClick={() => setActiveTab(section.id)}
                     >
@@ -140,9 +123,13 @@ export default function DocumentationPage() {
                             {section.description}
                           </CardDescription>
                         </div>
-                        {activeTab === section.id && (
-                          <Badge variant="outline" className="ml-auto">
+                        {activeTab === section.id ? (
+                          <Badge className="ml-auto bg-primary">
                             Active
+                          </Badge>
+                        ) : (
+                          <Badge variant="outline" className="ml-auto opacity-50">
+                            Select
                           </Badge>
                         )}
                       </CardHeader>

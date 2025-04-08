@@ -121,69 +121,20 @@
   }
 }
 
-/* 代码高亮自定义样式 */
-.hljs-comment, .hljs-quote {
-  color: #8a8a8a;
-  font-style: italic;
+/* 代码块基础样式 */
+pre {
+  margin: 1.5rem 0;
+  overflow: auto;
+  font-family: var(--font-geist-mono);
 }
 
-.hljs-keyword, .hljs-selector-tag {
-  color: #5d45dd;
+/* 确保代码高亮在深色/浅色模式下正常显示 */
+.hljs {
+  display: block;
+  background: transparent;
 }
 
-.hljs-string, .hljs-regexp, .hljs-literal {
-  color: #b22222;
-}
-
-.hljs-number, .hljs-boolean {
-  color: #008080;
-}
-
-.hljs-title, .hljs-tag .hljs-name, .hljs-section {
-  color: #1e90ff;
-}
-
-.hljs-attr, .hljs-attribute, .hljs-selector-id, .hljs-selector-class {
-  color: #008b8b;
-}
-
-.hljs-built_in, .hljs-builtin-name {
-  color: #9932cc;
-}
-
-.hljs-variable, .hljs-name {
-  color: #ee6aa7;
-}
-
-/* 深色模式样式覆盖 */
-.dark .hljs-comment, .dark .hljs-quote {
-  color: #a0a0a0;
-}
-
-.dark .hljs-keyword, .dark .hljs-selector-tag {
-  color: #8a7eee;
-}
-
-.dark .hljs-string, .dark .hljs-regexp, .dark .hljs-literal {
-  color: #f06666;
-}
-
-.dark .hljs-number, .dark .hljs-boolean {
-  color: #4ec9b0;
-}
-
-.dark .hljs-title, .dark .hljs-tag .hljs-name, .dark .hljs-section {
-  color: #569cd6;
-}
-
-.dark .hljs-attr, .dark .hljs-attribute, .dark .hljs-selector-id, .dark .hljs-selector-class {
-  color: #4ec9b0;
-}
-
-.dark .hljs-built_in, .dark .hljs-builtin-name {
-  color: #c586c0;
-}
-
-.dark .hljs-variable, .dark .hljs-name {
-  color: #f8b8d0;
+/* 使代码字体与系统字体保持一致 */
+code {
+  font-family: var(--font-geist-mono);
 }

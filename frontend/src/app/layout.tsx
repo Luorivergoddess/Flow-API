@@ -24,6 +24,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* 通过CDN导入highlight.js样式 */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* 在浅色模式下使用github主题 */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css');
+            
+            /* 在深色模式下使用atom-one-dark主题 */
+            @media (prefers-color-scheme: dark) {
+              @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css');
+            }
+            
+            /* 当HTML标签有dark类时也使用深色主题 */
+            html.dark .hljs {
+              background-color: #282c34;
+              color: #abb2bf;
+            }
+          `
+        }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

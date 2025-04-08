@@ -67,7 +67,7 @@ function CodeBlockWrapper({ children, language, rawCode, className }: CodeBlockW
       </Button>
       
       <pre
-        className="p-5 overflow-x-auto bg-muted rounded-md border border-border text-sm"
+        className="p-5 overflow-x-auto rounded-md border border-border bg-transparent text-sm leading-relaxed"
       >
         {children}
       </pre>
@@ -139,21 +139,47 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             // 语言信息通常在 'language-xxx' 形式的类名中
             const language = (className1 ? String(className1).split('-')[1] : '') || '';
             
-            // 尝试从不同位置获取原始代码
-            let rawCode = '';
-            if (codeEl?.children?.[0]?.value) {
-              // 直接值
-              rawCode = String(codeEl.children[0].value);
-            } else if (typeof children === 'string') {
-              // 如果children是字符串
-              rawCode = children;
-            } else if (children && React.isValidElement(children)) {
-              // 如果children是React元素
-              const childrenProps = children.props as any;
-              if (typeof childrenProps?.children === 'string') {
-                rawCode = childrenProps.children;
+            // 改进的代码提取逻辑
+            const getCode = (element: any): string => {
+              // 如果是字符串，直接返回
+              if (typeof element === 'string') {
+                return element;
               }
-            }
+              
+              // 如果是React元素
+              if (React.isValidElement(element)) {
+                const props = element.props as any;
+                
+                // 如果children是字符串，返回它
+                if (typeof props.children === 'string') {
+                  return props.children;
+                }
+                
+                // 如果children是数组，递归处理每个子元素并拼接
+                if (Array.isArray(props.children)) {
+                  return props.children.map(getCode).join('');
+                }
+                
+                // 递归处理子元素
+                return getCode(props.children);
+              }
+              
+              // 如果是数组，处理每个元素并拼接
+              if (Array.isArray(element)) {
+                return element.map(getCode).join('');
+              }
+              
+              // 如果有value属性（如AST节点）
+              if (element && typeof element === 'object' && 'value' in element) {
+                return String(element.value);
+              }
+              
+              // 默认返回空字符串
+              return '';
+            };
+            
+            // 获取代码内容
+            const rawCode = getCode(children);
             
             return (
               <CodeBlockWrapper 
@@ -181,7 +207,8 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
                 </code>
               );
             }
-            return <code className={className} {...props}>{children}</code>;
+            // 确保代码有hljs类以便应用高亮样式
+            return <code className={cn("hljs font-mono text-sm", className)} {...props}>{children}</code>;
           },
           
           // 其他元素样式增强

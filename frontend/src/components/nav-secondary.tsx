@@ -1,7 +1,7 @@
 "use client"
 
-import type * as React from "react"
-import type { LucideIcon } from "lucide-react"
+import * as React from "react"
+import { type Icon } from "@tabler/icons-react"
 
 import {
   SidebarGroup,
@@ -18,7 +18,7 @@ export function NavSecondary({
   items: {
     title: string
     url: string
-    icon: LucideIcon
+    icon: Icon
   }[]
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
@@ -40,4 +40,3 @@ export function NavSecondary({
     </SidebarGroup>
   )
 }
-

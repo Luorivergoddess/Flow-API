@@ -13,12 +13,14 @@ import {
 
 export function NavMain({
   items,
+  onItemClick,
 }: {
   items: {
     title: string
     url: string
     icon?: Icon
   }[]
+  onItemClick?: () => void
 }) {
   return (
     <SidebarGroup>
@@ -45,9 +47,14 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
+              <SidebarMenuButton 
+                tooltip={item.title} 
+                asChild // Use asChild to allow passing onClick to the anchor tag
+              >
+                <a href={item.url} onClick={onItemClick}> {/* Apply onItemClick here */}
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

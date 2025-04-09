@@ -13,6 +13,7 @@ import {
 
 export function NavSecondary({
   items,
+  onItemClick, // Add onItemClick prop
   ...props
 }: {
   items: {
@@ -20,6 +21,7 @@ export function NavSecondary({
     url: string
     icon: Icon
   }[]
+  onItemClick?: () => void // Define prop type
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
     <SidebarGroup {...props}>
@@ -28,7 +30,7 @@ export function NavSecondary({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <a href={item.url}>
+                <a href={item.url} onClick={onItemClick}> {/* Apply onItemClick here */}
                   <item.icon />
                   <span>{item.title}</span>
                 </a>

@@ -1,8 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import {
   IconChartBar,
+  IconChevronLeft,
+  IconChevronRight,
   IconCircuitBattery,
   IconDashboard,
   IconDatabase,
@@ -20,6 +23,8 @@ import {
   IconWallet
 } from "@tabler/icons-react"
 
+import { Button } from "@/components/ui/button"
+
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -34,7 +39,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-const data = {
+export const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
@@ -114,8 +119,26 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { isTablet } = useMediaQuery();
+  const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(!isTablet);
+
+  // 切换侧边栏展开/收起状态
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
+
+  // 根据设备响应式调整侧边栏状态
+  React.useEffect(() => {
+    setIsSidebarExpanded(!isTablet);
+  }, [isTablet]);
+
   return (
-    <Sidebar collapsible="offcanvas" {...props}>
+    <Sidebar 
+      collapsible="icon"
+      data-state={isSidebarExpanded ? "expanded" : "collapsed"}
+      className={isSidebarExpanded ? "w-[220px] xl:w-[260px]" : "w-[68px]"}
+      {...props}
+    >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

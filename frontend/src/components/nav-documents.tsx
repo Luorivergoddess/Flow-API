@@ -27,12 +27,14 @@ import {
 
 export function NavDocuments({
   items,
+  onItemClick,
 }: {
   items: {
     name: string
     url: string
     icon: Icon
   }[]
+  onItemClick?: () => void
 }) {
   const { isMobile } = useSidebar()
 
@@ -43,7 +45,7 @@ export function NavDocuments({
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <a href={item.url} onClick={onItemClick}> {/* Apply onItemClick here */}
                 <item.icon />
                 <span>{item.name}</span>
               </a>

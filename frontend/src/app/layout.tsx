@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flow-API | 统一API聚合平台",
-  description: "Flow-API是一个强大的API聚合平台，提供统一接口访问多种第三方服务，简化集成，减少复杂性，节省开发时间。",
+  title: "Flow-API | Unified API Aggregation Platform",
+  description: "Flow-API is a powerful API aggregation platform that provides a unified interface to access various third-party services, simplifying integration, reducing complexity, and saving development time.",
 };
 
 export default function RootLayout({

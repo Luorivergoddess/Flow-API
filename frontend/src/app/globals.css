@@ -121,20 +121,20 @@
   }
 }
 
-/* 代码块基础样式 */
+/* Basic code block styles */
 pre {
   margin: 1.5rem 0;
   overflow: auto;
   font-family: var(--font-geist-mono);
 }
 
-/* 确保代码高亮在深色/浅色模式下正常显示 */
+/* Ensure code highlighting displays correctly in dark/light mode */
 .hljs {
   display: block;
   background: transparent;
 }
 
-/* 使代码字体与系统字体保持一致 */
+/* Make the code font consistent with the system font */
 code {
   font-family: var(--font-geist-mono);
 }

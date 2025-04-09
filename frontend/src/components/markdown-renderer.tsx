@@ -82,7 +82,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
         components={{
-          // 段落样式增强
+          // Enhanced paragraph styling
           p: ({ className, children, ...props }: MarkdownComponentProps) => (
             <p 
               className={cn("my-6 leading-7", className)} 
@@ -92,7 +92,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             </p>
           ),
           
-          // 表格相关自定义渲染
+          // Custom rendering for tables
           table: ({ className, children, ...props }: MarkdownComponentProps) => (
             <Table className={cn("my-8 border rounded-lg overflow-hidden", className)} {...props}>
               {children}
@@ -130,55 +130,55 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             </TableCell>
           ),
           
-          // 代码块自定义渲染 - 增强版rehype-highlight
+          // Custom code block rendering - enhanced rehype-highlight
           pre: ({ node, className, children, ...props }: MarkdownComponentProps) => {
-            // 尝试提取代码内容和语言信息
+            // Try to extract code content and language information
             const codeEl = node?.children?.[0];
-            // 从类名中提取语言信息
+            // Extract language information from class name
             const className1 = codeEl?.properties?.className?.[0] || '';
-            // 语言信息通常在 'language-xxx' 形式的类名中
+            // Language information is usually in 'language-xxx' format class name
             const language = (className1 ? String(className1).split('-')[1] : '') || '';
             
-            // 改进的代码提取逻辑
+            // Improved code extraction logic
             const getCode = (element: any): string => {
-              // 如果是字符串，直接返回
+              // If it's a string, return directly
               if (typeof element === 'string') {
                 return element;
               }
               
-              // 如果是React元素
+              // If it's a React element
               if (React.isValidElement(element)) {
                 const props = element.props as any;
                 
-                // 如果children是字符串，返回它
+                // If children is a string, return it
                 if (typeof props.children === 'string') {
                   return props.children;
                 }
                 
-                // 如果children是数组，递归处理每个子元素并拼接
+                // If children is an array, recursively process each child element and concatenate
                 if (Array.isArray(props.children)) {
                   return props.children.map(getCode).join('');
                 }
                 
-                // 递归处理子元素
+                // Recursively process child elements
                 return getCode(props.children);
               }
               
-              // 如果是数组，处理每个元素并拼接
+              // If it's an array, process each element and concatenate
               if (Array.isArray(element)) {
                 return element.map(getCode).join('');
               }
               
-              // 如果有value属性（如AST节点）
+              // If it has a value property (like AST node)
               if (element && typeof element === 'object' && 'value' in element) {
                 return String(element.value);
               }
               
-              // 默认返回空字符串
+              // Default return empty string
               return '';
             };
             
-            // 获取代码内容
+            // Get code content
             const rawCode = getCode(children);
             
             return (
@@ -192,7 +192,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             );
           },
           
-          // 代码块自定义渲染 - rehype-highlight版本
+          // Custom code block rendering - rehype-highlight version
           code: ({ className, children, inline, ...props }: MarkdownComponentProps & { inline?: boolean }) => {
             if (inline) {
               return (
@@ -207,11 +207,11 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
                 </code>
               );
             }
-            // 确保代码有hljs类以便应用高亮样式
+            // Ensure code has hljs class to apply highlight styles
             return <code className={cn("hljs font-mono text-sm", className)} {...props}>{children}</code>;
           },
           
-          // 其他元素样式增强
+          // Enhanced styling for other elements
           a: ({ className, children, ...props }: MarkdownComponentProps) => (
             <a
               className={cn(
@@ -271,7 +271,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
               {children}
             </blockquote>
           ),
-          // 水平线样式
+          // Horizontal rule styling
           hr: ({ className, ...props }: MarkdownComponentProps) => (
             <hr 
               className={cn("my-8 border-t-2", className)} 

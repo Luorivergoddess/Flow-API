@@ -25,18 +25,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* 通过CDN导入highlight.js样式 */}
+        {/* Import highlight.js styles via CDN */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            /* 在浅色模式下使用github主题 */
+            /* Use github theme in light mode */
             @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css');
             
-            /* 在深色模式下使用atom-one-dark主题 */
+            /* Use atom-one-dark theme in dark mode */
             @media (prefers-color-scheme: dark) {
               @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css');
             }
             
-            /* 当HTML标签有dark类时也使用深色主题 */
+            /* Also use dark theme when HTML tag has dark class */
             html.dark .hljs {
               background-color: #282c34;
               color: #abb2bf;

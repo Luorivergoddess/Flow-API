@@ -17,7 +17,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { data } from "@/components/app-sidebar";
 
-// 使用默认导航组件，以确保桌面端和移动端体验一致
+// Use default navigation components to ensure consistent experience between desktop and mobile
 import {
   SidebarContent,
   SidebarFooter,
@@ -32,16 +32,16 @@ import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 
 /**
- * 重写移动侧边栏，复用与桌面端相同的组件
+ * Rewrite mobile sidebar, reusing the same components as the desktop version
  */
 export function MobileSheetSidebar() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const { isMobile, isSm } = useMediaQuery();
 
-  // 仅在移动设备上显示
+  // Only display on mobile devices
   if (isMobile || isSm) {
-    // 每个链接项点击时关闭侧边栏
+    // Close sidebar when each link item is clicked
     const handleLinkClick = () => setOpen(false);
     
     return (
@@ -53,16 +53,16 @@ export function MobileSheetSidebar() {
             className="size-9 shrink-0 md:hidden"
           >
             <Menu className="size-5" />
-            <span className="sr-only">切换导航菜单</span>
+            <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col p-0">
           <SheetHeader className="sr-only">
-            <SheetTitle>导航菜单</SheetTitle>
+            <SheetTitle>Navigation Menu</SheetTitle>
           </SheetHeader>
           <ScrollArea className="h-full overflow-y-auto">
             <div className="flex h-full w-full flex-col">
-              {/* 以下使用与桌面端相同的组件结构，只是添加点击事件处理 */}
+              {/* Use the same component structure as the desktop version below, just add click event handling */}
               <SidebarHeader>
                 <SidebarMenu>
                   <SidebarMenuItem>
@@ -96,6 +96,6 @@ export function MobileSheetSidebar() {
     );
   }
 
-  // 非移动设备返回一个空的占位元素
+  // Return an empty placeholder element for non-mobile devices
   return <div className="hidden" />;
 }

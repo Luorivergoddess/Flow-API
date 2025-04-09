@@ -122,12 +122,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { isTablet } = useMediaQuery();
   const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(!isTablet);
 
-  // 切换侧边栏展开/收起状态
+  // Toggle sidebar expanded/collapsed state
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
 
-  // 根据设备响应式调整侧边栏状态
+  // Adjust sidebar state based on device responsiveness
   React.useEffect(() => {
     setIsSidebarExpanded(!isTablet);
   }, [isTablet]);
